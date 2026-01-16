@@ -29,7 +29,7 @@ Este documento descreve os agentes especializados disponíveis para trabalhar ne
 
 **Características:**
 - Executa comandos como testes, builds, lints e instalação de dependências
-- Retorna resumo breve em caso de sucesso (ex: "Todos os 247 testes passaram", "Build bem-sucedido")
+- Retorna resumo breve em caso de sucesso (ex: "Todos os 247 testes passaram", "Compilação bem-sucedida")
 - Retorna saída completa em caso de falha (stack traces, erros do compilador)
 - Mantém o contexto principal limpo minimizando a saída de comandos bem-sucedidos
 - Utiliza o modelo Haiku
