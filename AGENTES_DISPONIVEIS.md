@@ -25,7 +25,7 @@ Este documento descreve os agentes especializados disponíveis para trabalhar ne
 - Para localizar lógica específica no repositório
 
 ### 2. Agente de Tarefas (task)
-**Especialidade:** Execução de comandos com saída verbosa
+**Especialidade:** Execução de comandos com saída otimizada
 
 **Características:**
 - Executa comandos como testes, builds, lints e instalação de dependências
@@ -68,7 +68,7 @@ Este documento descreve os agentes especializados disponíveis para trabalhar ne
 - Os resultados dos agentes são retornados em uma única mensagem
 - É possível usar o parâmetro 'model' para substituir o modelo padrão de qualquer tipo de agente
 
-### Quando NÃO usar a ferramenta Task
+### Quando NÃO usar o Agente de Tarefas
 - Para ler caminhos de arquivo específicos que você já conhece - use a ferramenta view
 - Para uma busca simples com grep/glob - use as ferramentas grep/glob diretamente
 - Para comandos onde você precisa da saída completa imediata no seu contexto - use bash diretamente
