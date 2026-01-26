@@ -1,0 +1,19 @@
+{
+  "name": "marketwatch-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard de mercado financeiro com testes automatizados",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:login": "playwright test login.spec.js",
+    "test:report": "playwright show-report"
+  },
+  "keywords": ["dashboard", "finance", "testing"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}

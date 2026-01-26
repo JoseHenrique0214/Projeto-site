@@ -1,16 +1,567 @@
+/* Reset e Configurações Globais */
 * {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #0066ff;
+    --secondary-color: #00cc88;
+    --dark-bg: #0a0e27;
+    --card-bg: #1a1f3a;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --positive: #00cc88;
+    --negative: #ff4757;
+    --border-color: #2d3548;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 body {
-    background-color: aqua;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
 }
 
-main {
-    background-color: white;
-    width: 500px;
-    margin: auto;
-    padding: 10px;
-    box-shadow: 3px 3px 5px green;
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background: rgba(26, 31, 58, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.logo i {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+}
+
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.data-hora {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.btn-logout {
+    background: rgba(255, 71, 87, 0.2);
+    color: #ff4757;
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 71, 87, 0.3);
+    border-color: #ff4757;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+.btn-atualizar {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-atualizar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 102, 255, 0.4);
+}
+
+.btn-atualizar i {
+    animation: rotate 2s linear infinite paused;
+}
+
+.btn-atualizar:hover i {
+    animation-play-state: running;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Dashboard */
+.dashboard {
+    padding: 2rem 0;
+}
+
+.secao {
+    margin-bottom: 3rem;
+}
+
+.secao-titulo {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.secao-titulo i {
+    color: var(--secondary-color);
+}
+
+/* Grid de Cards */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Card de Cotação */
+.cotacao-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+}
+
+.cotacao-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: var(--primary-color);
+}
+
+.cotacao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.cotacao-header h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.badge {
+    background: rgba(0, 102, 255, 0.2);
+    color: var(--primary-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-brasil {
+    background: rgba(0, 204, 136, 0.2);
+    color: var(--secondary-color);
+}
+
+.badge-usa {
+    background: rgba(220, 53, 69, 0.2);
+    color: #ff6b81;
+}
+
+.badge-uk {
+    background: rgba(102, 51, 153, 0.2);
+    color: #a29bfe;
+}
+
+.cotacao-valor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
+.valor-principal {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.variacao {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+}
+
+.variacao.positiva {
+    background: rgba(0, 204, 136, 0.15);
+    color: var(--positive);
+}
+
+.variacao.negativa {
+    background: rgba(255, 71, 87, 0.15);
+    color: var(--negative);
+}
+
+.variacao.grande {
+    font-size: 1.2rem;
+}
+
+.cotacao-info {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* Card de Índice */
+.indice-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+}
+
+.indice-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.indice-card.destaque {
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 204, 136, 0.1) 100%);
+    border: 1px solid var(--primary-color);
+}
+
+.indice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.indice-header h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.indice-valor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.indice-valor .valor-principal {
+    font-size: 1.8rem;
+}
+
+/* Mini Gráfico */
+.mini-grafico {
+    margin-top: 1rem;
+    height: 40px;
+}
+
+.grafico-linha {
+    width: 100%;
+    height: 100%;
+}
+
+.grafico-linha svg {
+    width: 100%;
+    height: 100%;
+}
+
+.grafico-linha.positivo polyline {
+    fill: none;
+    stroke: var(--positive);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 4px var(--positive));
+}
+
+/* Card de Criptomoeda */
+.cripto-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+}
+
+.cripto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: var(--secondary-color);
+}
+
+.cripto-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.cripto-icon.bitcoin {
+    background: rgba(247, 147, 26, 0.2);
+    color: #f7931a;
+}
+
+.cripto-icon.ethereum {
+    background: rgba(98, 126, 234, 0.2);
+    color: #627eea;
+}
+
+.cripto-icon.solana {
+    background: rgba(220, 31, 255, 0.2);
+    color: #dc1fff;
+}
+
+.cripto-icon.bnb {
+    background: rgba(243, 186, 47, 0.2);
+    color: #f3ba2f;
+}
+
+.cripto-icon.cardano {
+    background: rgba(0, 51, 173, 0.2);
+    color: #0033ad;
+}
+
+.cripto-icon.xrp {
+    background: rgba(35, 37, 41, 0.2);
+    color: #23292f;
+}
+
+.cripto-simbolo-grande {
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.cripto-info {
+    flex: 1;
+}
+
+.cripto-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.cripto-simbolo {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.cripto-valor {
+    text-align: right;
+}
+
+.cripto-valor .valor-principal {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.cripto-valor .variacao {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+}
+
+/* Card de Commodity */
+.commodity-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.commodity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.commodity-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.8rem;
+}
+
+.commodity-icon.ouro {
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+}
+
+.commodity-icon.petroleo {
+    background: rgba(52, 73, 94, 0.2);
+    color: #34495e;
+}
+
+.commodity-icon.prata {
+    background: rgba(192, 192, 192, 0.2);
+    color: #c0c0c0;
+}
+
+.commodity-icon.cafe {
+    background: rgba(111, 78, 55, 0.2);
+    color: #6f4e37;
+}
+
+.commodity-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.commodity-card .valor-principal {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.commodity-card .variacao {
+    display: inline-flex;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.8rem;
+}
+
+/* Footer */
+.footer {
+    background: rgba(26, 31, 58, 0.8);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    margin-top: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.footer p {
+    margin: 0.5rem 0;
+}
+
+.footer i {
+    color: var(--secondary-color);
+    margin-right: 5px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cotacao-card,
+.indice-card,
+.cripto-card,
+.commodity-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .header-info {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .secao-titulo {
+        font-size: 1.4rem;
+    }
+    
+    .cards-grid,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .valor-principal {
+        font-size: 1.5rem !important;
+    }
+    
+    .cripto-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cripto-valor {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cotacao-valor {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .indice-valor {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
 }
